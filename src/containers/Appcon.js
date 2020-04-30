@@ -18,7 +18,7 @@ class AppCon extends React.Component{
   }
 
   async componentDidMount(){
-      let songResp = await fetch('http://localhost:3000/songs',{
+      let songResp = await fetch('https://sonata-api.herokuapp.com/songs',{
           method:'GET',
           headers:{'Content-Type':'application/json'}
       })
@@ -27,7 +27,7 @@ class AppCon extends React.Component{
           songs:songArray
       })
 
-      let userResp = await fetch('http://localhost:3000/users',{
+      let userResp = await fetch('https://sonata-api.herokuapp.com/users',{
           method:'GET',
           headers:{'Content-Type':'application/json'}
       })
@@ -46,7 +46,7 @@ class AppCon extends React.Component{
   }
 
   addPlaylist=async (playlistObj)=>{
-    let resp= await fetch('http://localhost:3000/playlists',{
+    let resp= await fetch('https://sonata-api.herokuapp.com/playlists',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify(playlistObj)
@@ -66,13 +66,13 @@ class AppCon extends React.Component{
       this.setState({
           user:{playlists:[...updatedArray]}
       })
-    let resp = await fetch(`http://localhost:3000/playlists/${id}`,{
+    let resp = await fetch(`https://sonata-api.herokuapp.com/playlists/${id}`,{
         method:'DELETE'
     })
   }
 
   addPlaySong=async (playSongObj)=>{
-    let resp = await fetch('http://localhost:3000/playlist_songs',{
+    let resp = await fetch('https://sonata-api.herokuapp.com/playlist_songs',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
         body: JSON.stringify(playSongObj)
