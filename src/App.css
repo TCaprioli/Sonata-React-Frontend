@@ -1,38 +1,118 @@
-.App {
+.navbar{
+  background: #FFC48C;
+}
+
+#app-title{
+font-style: italic;
+font-family: 'Josefin Sans', sans-serif;
+font-size: 50px;
+text-shadow: 4px 4px 4px #aaa;
+}
+
+#footer-note{
+  font-size: small;
+}
+
+.App{
+  
+
+}
+
+.min-vh-100{
+  background:rgb(24, 49, 87);
+}
+
+.col-sm{
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  padding: 100px;
 }
 
-.App-link {
-  color: #61dafb;
+.mediacon{
+  position: relative;
+  top: 50px;
+  border-radius: 15px;
+  background: #FFC48C;
+  color: black;
+  height: 200px;
+  width: 200px;
+  overflow: scroll;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.playercon{
+  position: relative;
+  top: 15px;
+  height: 300px;
+  width: 300px;
+  border: 1px solid;
+  box-shadow: 2.5px 5px #888888;
+}
+
+.songcon{
+  float: right;
+}
+
+.playlistcon{
+  /* float: left; */
+}
+
+.pl-btn.btn-sm{
+  position: relative;
+  border-radius: 15px;
+  left:5px;
+  height: 20px;
+  width: 20px;
+}
+
+.pl-btn-txt{
+  position: relative;
+  top:-6px;
+  left:-3.2px;
+}
+.pl-btn-txt2{
+  position: relative;
+  top:-7px;
+  left:-5.5px;
+}
+
+.song-selection{
+  padding:2.5px;
+}
+
+.song-selection:hover{
+  background: grey;
+}
+
+.audio{
+  position: relative;
+  top:80px;
+  height: 30px;
+}
+
+.player-info{
+  position: relative;
+  top: 25px;
+  margin-bottom: -50px;
+}
+
+.con-title{
+  position: relative;
+  top:10px;
+}
+
+.like-btn{
+  background-color: rgb(24, 49, 87);
+  border-color: rgb(24, 49, 87);
+}
+
+.like-form{
+  position: relative;
+  left:2px;
+  background-color: #FFC48C;
+  width: 156px;
+}
+.dropdown-menu.show{
+  background-color: #FFC48C;
+  border:solid;
+  width:170px;
 }
