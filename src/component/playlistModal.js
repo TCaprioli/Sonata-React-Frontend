@@ -21,7 +21,7 @@ class PlaylistModal extends React.Component{
 
   playObj=()=>({
     name: this.state.name,
-    user_id: 3
+    user_id: 1
   })
 
   handleSubmit=(event)=>{

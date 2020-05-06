@@ -1,9 +1,9 @@
 import React from 'react'
 import PlaylistModal from '../component/playlistModal'
 import Playlist from '../component/playlist'
-import Song from '../component/song'
-class PlaylistCon extends React.Component{
+import CurrentPlaylist from './CurrentPlaylist'
 
+class PlaylistCon extends React.Component{
 
   addCurrentPlaylist=(playlist)=>{
     this.setState({
@@ -20,19 +20,23 @@ class PlaylistCon extends React.Component{
     let {playlists} = this.props
     return playlists.map(playlist =>  <Playlist key={playlist.id} playlistData={playlist} removePlaylist={this.props.removePlaylist} addCurrentPlaylist={this.props.addCurrentPlaylist}/>)
   }
+  
 
-  mapSongs=()=>{
-      let {currentPlaylist} = this.props
-      return currentPlaylist.songs.map(song => <Song key={song.id} songData={song} selectSong={this.props.selectSong}/>)
-
+  existingPlaylist=()=>{
+    if(Object.keys(this.props.currentPlaylist).length === 0){
+      return false
+    }
+    else{
+      return true
+    }
   }
 
   render(){
-      console.log(this.props.playlists)
+    console.log(this.existingPlaylist())
     return(
       <div>
           {
-            Object.keys(this.props.currentPlaylist).length === 1?
+            this.existingPlaylist() === false?
               <div className='mediacon playlistcon'>
                 <div className='con-title'>
                     <PlaylistModal  addPlaylist={this.props.addPlaylist}/>
@@ -41,16 +45,7 @@ class PlaylistCon extends React.Component{
             {this.mapPlaylists()}
           </div>
           :
-          <div className='mediacon playlistcon'>
-                <div className='con-title'>
-                    {this.props.currentPlaylist.name}
-                    <button className='btn btn-light btn-sm pl-btn'onClick={this.handleOnClick}>
-                        <img className='pl-btn-txt2'src={require(`../songData/jpg/home.png`)} />
-                    </button>
-                </div>
-            <hr/>
-            {this.mapSongs()}
-          </div>
+          <CurrentPlaylist currentPlaylist={this.props.currentPlaylist} home={this.handleOnClick}/>
           }
        
       </div>

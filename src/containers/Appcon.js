@@ -7,9 +7,7 @@ import PlaylistCon from './Playlistcon'
 class AppCon extends React.Component{
   state={
     currentSong:{},
-    currentPlaylist:{
-        songs:[]
-    },
+    currentPlaylist:{},
     songs:[],
     user:{
         id:0,
@@ -53,7 +51,6 @@ class AppCon extends React.Component{
     })
 
     let data = await resp.json()
-    console.log(data)
     this.setState({
         user:{playlists:[...this.state.user.playlists, data]}
     })
@@ -62,7 +59,6 @@ class AppCon extends React.Component{
 
   removePlaylist=async (id)=>{
       let updatedArray = this.state.user.playlists.filter(playlist => playlist.id !== id)
-      console.log(updatedArray)
       this.setState({
           user:{playlists:[...updatedArray]}
       })
@@ -78,7 +74,6 @@ class AppCon extends React.Component{
         body: JSON.stringify(playSongObj)
     })
     let data = await resp.json()
-    console.log(data)
     let updatedArray = this.state.user.playlists.map(playlist => {
         if(playlist.id === data.playlist_id){
             return {...playlist, songs:[...playlist.songs, data.song]}
@@ -87,14 +82,22 @@ class AppCon extends React.Component{
             return playlist
         }
     })
+    if(this.state.currentPlaylist.songs){
     this.setState({
         user:{
             playlists:updatedArray
         },
         currentPlaylist:{
+            id:this.state.currentPlaylist.id,
+            name:this.state.currentPlaylist.name,
             songs:[...this.state.currentPlaylist.songs, data.song]
         }
     })
+    alert(`${data.song.name} has been added to your playlist`)
+    }
+    else{
+        alert('open your playlist to add a song')
+    }
   }
 
 
@@ -107,9 +110,7 @@ class AppCon extends React.Component{
 
   removeCurrentPlaylist=()=>{
       this.setState({
-          currentPlaylist:{
-            songs:[]
-          }
+          currentPlaylist:{}
       })
   }
 
